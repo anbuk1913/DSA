@@ -95,7 +95,7 @@ class LinkedList{
 
 const list = new LinkedList()
 
-// list.append(5)
+list.append(5)
 list.append(3)
 list.prepend(6)
 list.removeVal(4)
