@@ -31,6 +31,16 @@ class HashTable{
         }
         return null
     }
+    display(){
+        const table = this.table
+        for(let i of table){
+            if(i){
+                for(let j of i){
+                    if(j[0]){
+                        console.log(j[0],j[1])
+                    }
+                }
+            }
+        }
+    }
 }
-
-const obj = new HashTable(50)
