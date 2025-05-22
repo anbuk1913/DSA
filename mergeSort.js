@@ -18,3 +18,5 @@ function sort(left,right){
     }
     return ans.concat(left.slice(i)).concat(right.slice(j))
 }
+
+console.log(mergeSort([5,7,334,64,5]))
