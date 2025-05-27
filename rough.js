@@ -1,16 +1,16 @@
-    let nums = [1,1,2,2,2,3]
+    let n = 10, m = 3
     
-    for(let i=1;i<arr.length;i++){
-        let tem = score[i]
-        let curr = arr[i]
-        let j = i-1
-        while(j>=0 && arr[j]<curr){
-            score[j+1] = score[j]
-            arr[j+1] = arr[j--]
+    let num1 = []
+    let num2 = []
+
+    let ans = 0
+    for(let i=1;i<=n;i++){
+        if(i%m){
+            num1.push(i)
+        } else {
+            num2.push(i)
         }
-        score[j+1] = tem
-        arr[j+1]=curr
     }
-    console.log(arr)
-    
-    // console.log(score)
+    for(let i=0;i<num1.length;i++)ans+=num1[i]
+    for(let i=0;i<num2.length;i++)ans-=num2[i]
+    console.log(ans)
