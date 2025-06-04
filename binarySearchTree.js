@@ -75,11 +75,11 @@ class BinaryTree{
         while(queue.length){
             let curr = queue.pop()
             console.log(curr.value)
-            if(curr.left){
-                queue.push(curr.left)
-            }
             if(curr.right){
                 queue.push(curr.right)
+            }
+            if(curr.left){
+                queue.push(curr.left)
             }
         }
     }
@@ -122,23 +122,38 @@ class BinaryTree{
         }
         return root
     }
+    second(root){
+        if(!root || !root.left && !root.right){
+            return null
+        }
+        let curr = root
+        while(curr){
+            if(curr.right && !curr.right.left && !curr.right.right){
+                return curr.value
+            }
+            else if(!curr.right && curr.left){
+                return this.max(curr.left)
+            }
+            curr = curr.right
+        }
+    }
 }
 
 const tree = new BinaryTree()
 
-tree.insert(8)
+tree.insert(800)
 tree.insert(4)
-tree.insert(12)
 tree.insert(2)
 tree.insert(6)
-tree.insert(10)
-tree.insert(14)
 tree.insert(1)
 tree.insert(3)
 tree.insert(5)
 tree.insert(7)
+tree.insert(12)
+tree.insert(10)
+tree.insert(14)
 tree.insert(9)
 tree.insert(11)
 tree.insert(13)
 tree.insert(15)
-console.log(tree.root)
+tree.preOrder()
