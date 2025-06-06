@@ -137,11 +137,19 @@ class BinaryTree{
             curr = curr.right
         }
     }
+    depth(root){
+        if(!root){
+            return 0
+        }
+        let leftDepth = this.depth(root.left)
+        let rightDepth = this.depth(root.right)
+        return Math.max(leftDepth,rightDepth)+1
+    }
 }
 
 const tree = new BinaryTree()
 
-tree.insert(800)
+tree.insert(8)
 tree.insert(4)
 tree.insert(2)
 tree.insert(6)
@@ -156,4 +164,4 @@ tree.insert(9)
 tree.insert(11)
 tree.insert(13)
 tree.insert(15)
-tree.preOrder()
+console.log(tree.depth(tree.root))
