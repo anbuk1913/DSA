@@ -1,105 +1,89 @@
-class Node {
+class Node{
     constructor(){
-        this.children ={}
-        this.EndoftheWord = false
+        this.children = {}
+        this.endOftheWord = false
     }
 }
 
-class tire {
+class Trie{
     constructor(){
         this.root = new Node()
     }
-
     insert(word){
         let node = this.root
-        for(let char of word){
-            if(!node.children[char]){
-                node.children[char]= new Node()
+        for(let i of word){
+            if(!node.children[i]){
+                node.children[i] = new Node
             }
-            node = node.children[char]
+            node = node.children[i]
         }
-        node.EndoftheWord = true 
+        node.endOftheWord = true
     }
-
     search(word){
         let node = this.root
-        for(let char of word){
-            if(!node.children[char]){
+        for(let i of word){
+            if(!node.children[i]){
                 return false
             }
-            node = node.children[char]
+            node = node.children[i]
         }
-        return node.EndoftheWord
+        return node.endOftheWord
     }
-
-
-    startwith(prefix){
+    startWith(word){
         let node = this.root
-        for(let char of prefix){
-            if(!node.children[char]){
+        for(let i of word){
+            if(!node.children[i]){
                 return false
             }
-            node = node.children[char]
+            node = node.children[i]
         }
-        return true 
+        return true
     }
-
     autoComplete(word){
-        let node = this.root 
-        for(let char of word){
-            if(!node.children[char]){
+        let node = this.root
+        for(let i of word){
+            if(!node.children[i]){
                 return []
             }
-            node = node.children[char]
+            node = node.children[i]
         }
         let list = []
-        this.collectword(node,word,list)
+        this.collectWords(node,word,list)
         return list
     }
-
-    collectword(node , word , list){
-        if(node.EndoftheWord){
+    collectWords(node,word,list){
+        if(node.endOftheWord){
             list.push(word)
         }
         for(let char in node.children){
-            this.collectword(node.children[char],word+char,list)
+            this.collectWords(node.children[char],word+char,list)
         }
     }
-
     print(){
         let list = []
-        this.collectword(this.root,'',list)
+        this.collectWords(this.root,"",list)
         console.log(list)
     }
-
     delete(word){
         let node = this.root
         let path = []
-        for(let char of word){
-            if(!node.children[char]){
-                return null
+        for(let i of word){
+            if(!node.children[i]){
+                null
             }
-            path.push([node,char])
-            node = node.children[char]
+            path.push([node,i])
+            node = node.children[i]
         }
-        if(node.EndoftheWord){
-            node.EndoftheWord = false
+        if(node.endOftheWord){
+            node.endOftheWord = false
         }
-        for(let i = word.length-1 ; i>=0 ;i--){  
+        for(let i=word.length-1;i>=0;i--){
             let [parentNode,char] = path[i]
-            if(Object.keys(node.children).length > 0 || node.EndoftheWord){
+            if(Object.keys(node.children).length>0 || node.endOftheWord){
                 break
             }
-            delete parentNode.children[char]            
+            delete parentNode.children[char]
             node = parentNode
         }
     }
 }
-
-
-let t = new tire()
-
-t.insert("sharik")
-t.insert("apple")
-t.insert("sherik")
-console.log(t)
