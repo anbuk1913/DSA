@@ -15,7 +15,7 @@ class Graph{
             this.addVertex(vertex2)
         }
         this.addVertex[vertex1].add(vertex2)
-        this.adjacency[vertex2].add(vertex1)
+        this.addVertex[vertex2].add(vertex1)
     }
     display(){
         for(let i in this.adjacency){

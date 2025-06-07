@@ -98,14 +98,3 @@ class MaxHeap {
         return this.heap.length > 0 ? this.heap[0] : null
     }
 }
-
-const maxHeap = new MaxHeap()
-
-maxHeap.insert(2)
-maxHeap.insert(4)
-maxHeap.insert(5)
-maxHeap.insert(1)
-maxHeap.insert(8)
-console.log(maxHeap.heap)
-console.log(maxHeap.heapSort(maxHeap.heap))
-console.log(maxHeap)
