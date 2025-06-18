@@ -149,4 +149,22 @@ class BinaryTree{
         let rightDepth = this.depth(root.right)
         return Math.max(leftDepth,rightDepth)+1
     }
+    kth(k){
+        let ans = 0
+        let count = 0
+        function rev(root){
+            if(!root || k<=count){
+                return
+            }
+            rev(root.right)
+            count++
+            if(count == k){
+                ans = root.value
+                return
+            }
+            rev(root.left)
+        }
+        rev(this.root)
+        return ans
+    }
 }
